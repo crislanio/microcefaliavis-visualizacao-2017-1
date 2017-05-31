@@ -1,4 +1,4 @@
-report date,location,location type,data field,data field code,time period,time period type,value,unit
+report_date,location,location_type,data_field,data_field_code,time_period,time_period_type,value,unit
 2016-05-14,Norte,region,zika reported,BR0011,NA,NA,8053,cases
 2016-05-14,Rondonia,state,zika reported,BR0011,NA,NA,960,cases
 2016-05-14,Acre,state,zika reported,BR0011,NA,NA,823,cases

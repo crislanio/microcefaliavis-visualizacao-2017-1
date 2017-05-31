@@ -1,4 +1,4 @@
-"report date,""location"",""location type"",""data field"",""data field code"",""time period"",""time period type"",""value"",""unit"""
+"report_date,""location"",""location_type"",""data_field"",""data_field_code"",""time_period"",""time_period_type"",""value"",""unit"""
 "2016-05-21,""Acre"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""0"",""cases"""
 "2016-05-21,""Alagoas"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""70"",""cases"""
 "2016-05-21,""Amapa"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""7"",""cases"""

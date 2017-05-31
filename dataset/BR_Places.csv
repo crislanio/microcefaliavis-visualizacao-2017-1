@@ -1,4 +1,4 @@
-"location,""location type"",""country"",""state province"",""district county municipality"",""city"",""alt name1"",""alt name2"""
+"location,""location_type"",""country"",""state_province"",""district_county_municipality"",""city"",""alt_name1"",""alt_name2"""
 "Alagoas,""state"",""Brazil"",""Alagoas"",NA,NA,""Alagoas"",NA"
 "Bahia,""state"",""Brazil"",""Bahia"",NA,NA,""Bahia"",NA"
 "Ceara,""state"",""Brazil"",""Ceara"",NA,NA,""Cear"",NA"

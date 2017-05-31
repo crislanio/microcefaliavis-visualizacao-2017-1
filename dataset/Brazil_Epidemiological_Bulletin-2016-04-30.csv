@@ -1,4 +1,4 @@
-report date,location,location type,data field,data field code,time period,time period type,value,unit
+report_date,location,location_type,data_field,data_field_code,time_period,time_period_type,value,unit
 2016-04-30,Norte,region,zika reported,BR0011,NA,NA,8379,cases
 2016-04-30,Acre,state,zika reported,BR0011,NA,NA,732,cases
 2016-04-30,Amapa,state,zika reported,BR0011,NA,NA,122,cases
