@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//d3js.org/queue.v1.min.js"></script>
 	<style type="text/css">
 		div.tooltip {
 			position: absolute;
@@ -22,14 +23,17 @@
 <body>
 
 	<select onchange="updateData(this)">
-		<option value="all">All</option>
-		<option value="zyka">Zyka</option>
-		<option value="micro">Microcefalia</option>
-		<option value="zykavsmicro">Zyka vs Microcefalia</option>
+		<option value="04-02">Boletim Epidemiológico 02/04/2016</option>
+		<option value="04-23">Boletim Epidemiológico 23/04/2016</option>
+		<option value="04-30">Boletim Epidemiológico 30/04/2016</option>
+		<option value="05-07">Boletim Epidemiológico 07/05/2016</option>
+		<option value="05-14">Boletim Epidemiológico 14/05/2016</option>
+		<option value="05-21">Boletim Epidemiológico 21/05/2016</option>
+		<option value="05-28">Boletim Epidemiológico 28/05/2016</option>
+		<option value="06-11">Boletim Epidemiológico 11/06/2016</option>
 	</select>
 
 	<script type="text/javascript">
-
 				//Width and height
 				var w = 1024;
 				var h = 768;
@@ -93,6 +97,34 @@
 				})
 				});
 				
+				function updateData(selector){
+					var dataPath = "./dataset/Brazil_Epidemiological_Bulletin-2016-" + selector.value + ".csv";
+					updateChoropleth(dataPath);
+				}
+
+				function updateChoropleth(dataPath){
+					d3.csv(dataPath, function(data) {
+						d3.json("brazil-states.json", function(json) { 
+							for (var i = 0; i < data.length; i++) { 
+								var dataState = data[i].location; 
+								var dataValue = parseFloat(data[i].value);
+								for (var j = 0; j < json.features.length; j++) { 
+									var jsonState = json.features[j].properties.name; 
+									if (dataState == jsonState) { 
+										json.features[j].properties.value = dataValue; 
+										break; 
+									} 
+								} 
+							}
+							map.data(json.features);
+							map.style("fill", function(d) {
+								return cScale(d.properties.value);
+							});
+						});
+						
+					});
+				}
+
 			</script>
 		</body>
-</html>
+		</html>
