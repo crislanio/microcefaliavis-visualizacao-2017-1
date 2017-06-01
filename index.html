@@ -16,7 +16,19 @@
 			border-radius: 4px;
 			pointer-events: none;
 			color:white;
-		}	
+		}
+		body > *{
+			float: left;
+		}
+
+		.arc text {
+			font: 10px sans-serif;
+			text-anchor: middle;
+		}
+
+		.arc path {
+			stroke: #fff;
+		}
 	</style>
 	<title>MicrocefaliaVis</title>
 </head>
@@ -32,99 +44,283 @@
 		<option value="05-28">Boletim Epidemiológico 28/05/2016</option>
 		<option value="06-11">Boletim Epidemiológico 11/06/2016</option>
 	</select>
+	<br/>
+	<br/>
+
+	<svg width="600" height="600" id="choropleth"></svg>
+	<svg width="600" height="600" id="piechart"></svg>
+
 
 	<script type="text/javascript">
-				//Width and height
-				var w = 1024;
-				var h = 768;
+		dictionary = {'02/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv",
+		'23/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-23.csv",
+		'30/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-30.csv",
+		'07/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-07.csv",
+		'14/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-14.csv",
+		'21/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-21.csv",
+		'28/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-28.csv",
+		'11/06':"./dataset/Brazil_Epidemiological_Bulletin-2016-06-11.csv"};
 
-				//Define path generator
-				var projection = d3.geoStereographic();
-				var path = d3.geoPath()
-				.projection(projection);
+	//Choropleth
 
-				//Tooltip div
-				var div = d3.select("body").append("div")
-				.attr("class", "tooltip")
-				.style("opacity", 0);
+		//Define path generator
+		var projection = d3.geoStereographic();
+		var path = d3.geoPath()
+		.projection(projection);
 
-				//Create SVG element
-				var svg = d3.select("body")
-				.append("svg")
-				.attr("width", w)
-				.attr("height", h);
+		//Tooltip div
+		var div = d3.select("body").append("div")
+		.attr("class", "tooltip")
+		.style("opacity", 0);
 
-				var cScale = d3.scaleLinear().domain([0,2600]).range(["#fee0d2","#fc9272","#de2d26"]);
+		//Create SVG element
+		var svg = d3.select("#choropleth");
+		var w = +svg.attr("width");
+		var h = +svg.attr("height");
 
-				//Load in GeoJSON data
-				d3.csv("./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv", function(data) {
-					d3.json("brazil-states.json", function(json) { 
-						for (var i = 0; i < data.length; i++) { 
-							var dataState = data[i].location; 
-							var dataValue = parseFloat(data[i].value);
-							for (var j = 0; j < json.features.length; j++) { 
-								var jsonState = json.features[j].properties.name; 
-								if (dataState == jsonState) { 
-									json.features[j].properties.value = dataValue; 
-									break; 
-								} 
-							} 
-						}
+		var cloroPlethCScale = d3.scaleLinear().domain([0,2600]).range(["#fee0d2","#fc9272","#de2d26"]);
 
-					projection.fitSize([w,h],json); //escala o mapa para ocupar todo o svg
+		//Load in GeoJSON data
+		d3.csv("./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv", function(data) {
+			d3.json("brazil-states.json", function(json) { 
+				for (var i = 0; i < data.length; i++) { 
+					var dataState = data[i].location; 
+					var dataValue = parseFloat(data[i].value);
+					for (var j = 0; j < json.features.length; j++) { 
+						var jsonState = json.features[j].properties.name; 
+						if (dataState == jsonState) { 
+							json.features[j].properties.value = dataValue; 
+							break; 
+						} 
+					} 
+				}
 
-					//Bind data and create one path per GeoJSON feature
-					map = svg.selectAll("path")
-					.data(json.features)
-					.enter()
-					.append("path")
-					.attr("d", path)
-					.style("fill", function(d) {
-						return cScale(d.properties.value);
-					}).on("mousemove", function(d) {
-						div.transition()
-						.duration(200)
-						.style("opacity", .9);
-						div.html(d.properties.name + "<br/>" + d.properties.value + " casos")
-						.style("left", (d3.event.pageX) + "px")
-						.style("top", (d3.event.pageY - 28) + "px");
-					})
-					.on("mouseout", function(d) {
-						div.transition()
-						.duration(500)
-						.style("opacity", 0);
-					});
+				projection.fitSize([w,h],json); //escala o mapa para ocupar todo o svg
+
+				//Bind data and create one path per GeoJSON feature
+				map = svg.selectAll("path")
+				.data(json.features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.style("fill", function(d) {
+					return cloroPlethCScale(d.properties.value);
+				}).on("mousemove", function(d) {
+					div.transition()
+					.duration(200)
+					.style("opacity", .9);
+					div.html(d.properties.name + "<br/>" + d.properties.value + " casos")
+					.style("left", (d3.event.pageX) + "px")
+					.style("top", (d3.event.pageY - 28) + "px");
 				})
+				.on("mouseout", function(d) {
+					div.transition()
+					.duration(500)
+					.style("opacity", 0);
 				});
-				
-				function updateData(selector){
-					var dataPath = "./dataset/Brazil_Epidemiological_Bulletin-2016-" + selector.value + ".csv";
-					updateChoropleth(dataPath);
+			})
+		});
+
+		renderPieChart();
+
+
+	//LineChart
+	/*d3.queue()
+	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv")
+	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-23.csv")
+	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-30.csv")
+	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-07.csv")
+	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-14.csv")
+	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-21.csv")
+	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-28.csv")
+	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-06-11.csv")
+	.await(makeLineChart);*/
+
+
+
+	//Aux Functions
+	function updateData(selector){
+		var dataPath = "./dataset/Brazil_Epidemiological_Bulletin-2016-" + selector.value + ".csv";
+		updateChoropleth(dataPath);
+		updatePieChart(dataPath);
+	}
+
+	function updateChoropleth(dataPath){
+		d3.csv(dataPath, function(data) {
+			d3.json("brazil-states.json", function(json) { 
+				for (var i = 0; i < data.length; i++) { 
+					var dataState = data[i].location; 
+					var dataValue = parseFloat(data[i].value);
+					for (var j = 0; j < json.features.length; j++) { 
+						var jsonState = json.features[j].properties.name; 
+						if (dataState == jsonState) { 
+							json.features[j].properties.value = dataValue; 
+							break; 
+						} 
+					} 
 				}
 
-				function updateChoropleth(dataPath){
-					d3.csv(dataPath, function(data) {
-						d3.json("brazil-states.json", function(json) { 
-							for (var i = 0; i < data.length; i++) { 
-								var dataState = data[i].location; 
-								var dataValue = parseFloat(data[i].value);
-								for (var j = 0; j < json.features.length; j++) { 
-									var jsonState = json.features[j].properties.name; 
-									if (dataState == jsonState) { 
-										json.features[j].properties.value = dataValue; 
-										break; 
-									} 
-								} 
-							}
-							map.data(json.features);
-							map.style("fill", function(d) {
-								return cScale(d.properties.value);
-							});
-						});
-						
-					});
-				}
+				map.data(json.features);
+				map.style("fill", function(d) {
+					return cloroPlethCScale(d.properties.value);
+				});
+			});
 
-			</script>
-		</body>
-		</html>
+		});
+	}
+
+	function renderPieChart(){
+		updatePieChart("./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv");
+	}
+
+	function updatePieChart(dataPath){
+		var svg2 = d3.select("#piechart"),
+		width = +svg2.attr("width"),
+		height = +svg2.attr("height"),
+		radius = Math.min(width, height) / 2,
+		g = svg2.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+		var color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+		var pie = d3.pie()
+		.sort(null)
+		.value(function(d) {  
+			if(d.location_type == "region"){
+				return d.value;
+			} 
+		});
+
+		var path = d3.arc()
+		.outerRadius(radius - 10)
+		.innerRadius(0);
+
+		var label = d3.arc()
+		.outerRadius(radius - 40)
+		.innerRadius(radius - 40);
+
+		d3.csv(dataPath, function(d) {
+			if(d.location_type == "region"){
+				d.value = +d.value;
+				return d;  
+			}
+		}, function(error, data) {
+			if (error) throw error;
+
+			var arc = g.selectAll(".arc")
+			.data(pie(data))
+			.enter().append("g")
+			.attr("class", "arc");
+
+			arc.append("path")
+			.attr("d", path)
+			.attr("fill", function(d) {
+				if(d.data.location_type == "region"){
+					return color(d.data.location);
+				}
+			});
+
+			arc.append("text")
+			.attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+			.attr("dy", "0.35em")
+			.text(function(d) { 
+				if(d.data.location_type == "region"){
+					return d.data.location;
+				}
+			});
+		});
+	}
+
+
+
+	/*
+	function makeLineChart(err,data1,data2,data3,data4,data5,data6,data7,data8){
+		var processedData = [{id:"Norte",values:[]},{id:"Nordeste",values:[]},{id:"Sudeste",values:[]},{id:"Sul",values:[]},{id:"Centro-Oeste",values:[]}];
+		processedData = parseData(data1,processedData,0);
+		processedData = parseData(data2,processedData,1);
+		processedData = parseData(data3,processedData,2);
+		processedData = parseData(data4,processedData,3);
+		processedData = parseData(data5,processedData,4);
+		processedData = parseData(data6,processedData,5);
+		processedData = parseData(data7,processedData,6);
+		processedData = parseData(data8,processedData,7);
+
+		renderLineChart(processedData);
+	}
+
+	function parseData(dataArray, processedData, dayIndex){
+		//[{id:nomeRegiao, values:[{date:data, casos:casos}]}]
+		dataArray = dataArray.filter(function(item,index,arr){return item.location_type == "region";});
+		dataArray.forEach(function(d,i){
+			var element = processedData.filter(function(item,index){
+				return item.id == d.location;
+			})[0];
+			var elementIndex = processedData.indexOf(element);
+			processedData[elementIndex].values.push({date:Object.keys(dictionary)[dayIndex],value:d.value});
+		});
+
+		return processedData;
+	}
+
+	function renderLineChart(processedData){
+		var svg2 = d3.select("#svg2"),
+		margin = {top: 20, right: 80, bottom: 30, left: 50},
+		width = svg2.attr("width") - margin.left - margin.right,
+		height = svg2.attr("height") - margin.top - margin.bottom,
+		g = svg2.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		var parseTime = d3.timeParse("%Y%m%d");
+
+		var x = d3.scaleTime().range([0, width]),
+		y = d3.scaleLinear().range([height, 0]),
+		colorScaleLine = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+		var line = d3.line()
+		.curve(d3.curveBasis)
+		.x(function(d) { return x(d.date); })
+		.y(function(d) { return y(d.casos); });
+
+		y.domain([
+			d3.min(processedData, function(c) { return d3.min(c.values, function(d) { return d.value; }); }),
+			d3.max(processedData, function(c) { return d3.max(c.values, function(d) { return d.value; }); })
+			]);
+
+		colorScaleLine.domain(processedData.map(function(c) { return c.id; }));
+
+		g.append("g")
+		.attr("class", "axis axis--x")
+		.attr("transform", "translate(0," + height + ")")
+		.call(d3.axisBottom(x));
+
+		g.append("g")
+		.attr("class", "axis axis--y")
+		.call(d3.axisLeft(y))
+		.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 6)
+		.attr("dy", "0.71em")
+		.attr("fill", "#000")
+		.text("Nº de Casos");
+
+		var region = g.selectAll(".region")
+		.data(processedData)
+		.enter().append("g")
+		.attr("class", "region");
+
+		region.append("path")
+		.attr("class", "line")
+		.attr("d", function(d) { return line(d.values); })
+		.style("stroke", function(d) { return colorScaleLine(d.id); });
+
+		region.append("text")
+		.datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+		.attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.value) + ")"; })
+		.attr("x", 3)
+		.attr("dy", "0.35em")
+		.style("font", "10px sans-serif")
+		.text(function(d) { return d.id; });
+
+	}*/
+
+</script>
+</body>
+</html>
