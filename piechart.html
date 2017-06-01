@@ -55,7 +55,6 @@
     arc.append("path")
     .attr("d", path)
     .attr("fill", function(d) {
-      debugger
       if(d.data.location_type == "region"){
         return color(d.data.location);
           }
