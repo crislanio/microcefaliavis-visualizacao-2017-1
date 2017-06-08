@@ -1,0 +1,4 @@
+1- Diminuir tamanho do pieChart
+2- Colocar legenda no choropleth
+3- Colocar opção de ver valores relativos a quantidade da população no linechart
+4- Colocar um comparativo aos dados de zica em outros paises no linechart
