@@ -29,6 +29,16 @@
 		.arc path {
 			stroke: #fff;
 		}
+
+		.axis--x path {
+			display: none;
+		}
+
+		.line {
+			fill: none;
+			stroke: steelblue;
+			stroke-width: 1.5px;
+		}
 	</style>
 	<title>MicrocefaliaVis</title>
 </head>
@@ -49,6 +59,7 @@
 
 	<svg width="600" height="600" id="choropleth"></svg>
 	<svg width="600" height="600" id="piechart"></svg>
+	<svg id="lineChart" width="1200" height="500"></svg>
 
 
 	<script type="text/javascript">
@@ -125,7 +136,7 @@
 
 
 	//LineChart
-	/*d3.queue()
+	d3.queue()
 	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv")
 	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-23.csv")
 	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-30.csv")
@@ -134,7 +145,7 @@
 	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-21.csv")
 	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-28.csv")
 	.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-06-11.csv")
-	.await(makeLineChart);*/
+	.await(makeLineChart);
 
 
 
@@ -230,11 +241,8 @@
 		});
 	}
 
-
-
-	/*
 	function makeLineChart(err,data1,data2,data3,data4,data5,data6,data7,data8){
-		var processedData = [{id:"Norte",values:[]},{id:"Nordeste",values:[]},{id:"Sudeste",values:[]},{id:"Sul",values:[]},{id:"Centro-Oeste",values:[]}];
+		var processedData = [];
 		processedData = parseData(data1,processedData,0);
 		processedData = parseData(data2,processedData,1);
 		processedData = parseData(data3,processedData,2);
@@ -244,45 +252,53 @@
 		processedData = parseData(data7,processedData,6);
 		processedData = parseData(data8,processedData,7);
 
-		renderLineChart(processedData);
+		objectsArray = [];
+		for(var property in processedData){
+			var element = {id:property, values:processedData[property]};
+			objectsArray.push(element);
+		}
+		renderLineChart(objectsArray);
 	}
 
 	function parseData(dataArray, processedData, dayIndex){
 		//[{id:nomeRegiao, values:[{date:data, casos:casos}]}]
-		dataArray = dataArray.filter(function(item,index,arr){return item.location_type == "region";});
+		var parseTime = d3.timeParse("%d/%m/%Y");
+		dataArray = dataArray.filter(function(item,index,arr){return item.location_type == "region";}); //comentar aqui se quiser mostrar todos estados
 		dataArray.forEach(function(d,i){
-			var element = processedData.filter(function(item,index){
-				return item.id == d.location;
-			})[0];
-			var elementIndex = processedData.indexOf(element);
-			processedData[elementIndex].values.push({date:Object.keys(dictionary)[dayIndex],value:d.value});
+			if(!processedData[d.location]){
+				processedData[d.location] = [];
+			}
+			processedData[d.location].push({date:parseTime(Object.keys(dictionary)[dayIndex] + "/2016"),casos:parseInt(d.value)});
 		});
-
 		return processedData;
 	}
 
 	function renderLineChart(processedData){
-		var svg2 = d3.select("#svg2"),
+		var svg2 = d3.select("#lineChart"),
 		margin = {top: 20, right: 80, bottom: 30, left: 50},
 		width = svg2.attr("width") - margin.left - margin.right,
 		height = svg2.attr("height") - margin.top - margin.bottom,
 		g = svg2.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-		var parseTime = d3.timeParse("%Y%m%d");
-
 		var x = d3.scaleTime().range([0, width]),
 		y = d3.scaleLinear().range([height, 0]),
 		colorScaleLine = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
 
 		var line = d3.line()
 		.curve(d3.curveBasis)
 		.x(function(d) { return x(d.date); })
 		.y(function(d) { return y(d.casos); });
 
+		valuesArray = processedData.map(function(c){return c.values});
+		var flattenedArray =[].concat.apply([], valuesArray);
+
+		x.domain(d3.extent(flattenedArray, function(d) { return d.date; }));
+
 		y.domain([
-			d3.min(processedData, function(c) { return d3.min(c.values, function(d) { return d.value; }); }),
-			d3.max(processedData, function(c) { return d3.max(c.values, function(d) { return d.value; }); })
-			]);
+			d3.min(processedData, function(c) { return d3.min(c.values, function(d) { return d.casos; }); }),
+			d3.max(processedData, function(c) { return d3.max(c.values, function(d) { return d.casos; }); })
+		]);
 
 		colorScaleLine.domain(processedData.map(function(c) { return c.id; }));
 
@@ -313,13 +329,12 @@
 
 		region.append("text")
 		.datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
-		.attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.value) + ")"; })
+		.attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.casos) + ")"; })
 		.attr("x", 3)
 		.attr("dy", "0.35em")
 		.style("font", "10px sans-serif")
 		.text(function(d) { return d.id; });
-
-	}*/
+	}
 
 </script>
 </body>

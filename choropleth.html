@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//d3js.org/queue.v1.min.js"></script>
+	<style type="text/css">
+		div.tooltip {
+			position: absolute;
+			text-align: center;
+			padding: 4px;
+			font: 12px sans-serif;
+			background: black;
+			border: 0px;
+			border-radius: 4px;
+			pointer-events: none;
+			color:white;
+		}	
+	</style>
+	<title>MicrocefaliaVis</title>
+</head>
+<body>
+
+	<select onchange="updateData(this)">
+		<option value="04-02">Boletim Epidemiológico 02/04/2016</option>
+		<option value="04-23">Boletim Epidemiológico 23/04/2016</option>
+		<option value="04-30">Boletim Epidemiológico 30/04/2016</option>
+		<option value="05-07">Boletim Epidemiológico 07/05/2016</option>
+		<option value="05-14">Boletim Epidemiológico 14/05/2016</option>
+		<option value="05-21">Boletim Epidemiológico 21/05/2016</option>
+		<option value="05-28">Boletim Epidemiológico 28/05/2016</option>
+		<option value="06-11">Boletim Epidemiológico 11/06/2016</option>
+	</select>
+
+	<script type="text/javascript">
+				//Width and height
+				var w = 1024;
+				var h = 768;
+
+				//Define path generator
+				var projection = d3.geoStereographic();
+				var path = d3.geoPath()
+				.projection(projection);
+
+				//Tooltip div
+				var div = d3.select("body").append("div")
+				.attr("class", "tooltip")
+				.style("opacity", 0);
+
+				//Create SVG element
+				var svg = d3.select("body")
+				.append("svg")
+				.attr("width", w)
+				.attr("height", h);
+
+				var cScale = d3.scaleLinear().domain([0,2600]).range(["#fee0d2","#fc9272","#de2d26"]);
+
+				//Load in GeoJSON data
+				d3.csv("./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv", function(data) {
+					d3.json("brazil-states.json", function(json) { 
+						for (var i = 0; i < data.length; i++) { 
+							var dataState = data[i].location; 
+							var dataValue = parseFloat(data[i].value);
+							for (var j = 0; j < json.features.length; j++) { 
+								var jsonState = json.features[j].properties.name; 
+								if (dataState == jsonState) { 
+									json.features[j].properties.value = dataValue; 
+									break; 
+								} 
+							} 
+						}
+
+					projection.fitSize([w,h],json); //escala o mapa para ocupar todo o svg
+
+					//Bind data and create one path per GeoJSON feature
+					map = svg.selectAll("path")
+					.data(json.features)
+					.enter()
+					.append("path")
+					.attr("d", path)
+					.style("fill", function(d) {
+						return cScale(d.properties.value);
+					}).on("mousemove", function(d) {
+						div.transition()
+						.duration(200)
+						.style("opacity", .9);
+						div.html(d.properties.name + "<br/>" + d.properties.value + " casos")
+						.style("left", (d3.event.pageX) + "px")
+						.style("top", (d3.event.pageY - 28) + "px");
+					})
+					.on("mouseout", function(d) {
+						div.transition()
+						.duration(500)
+						.style("opacity", 0);
+					});
+				})
+				});
+				
+				function updateData(selector){
+					var dataPath = "./dataset/Brazil_Epidemiological_Bulletin-2016-" + selector.value + ".csv";
+					updateChoropleth(dataPath);
+				}
+
+				function updateChoropleth(dataPath){
+					d3.csv(dataPath, function(data) {
+						d3.json("brazil-states.json", function(json) { 
+							for (var i = 0; i < data.length; i++) { 
+								var dataState = data[i].location; 
+								var dataValue = parseFloat(data[i].value);
+								for (var j = 0; j < json.features.length; j++) { 
+									var jsonState = json.features[j].properties.name; 
+									if (dataState == jsonState) { 
+										json.features[j].properties.value = dataValue; 
+										break; 
+									} 
+								} 
+							}
+							map.data(json.features);
+							map.style("fill", function(d) {
+								return cScale(d.properties.value);
+							});
+						});
+						
+					});
+				}
+
+			</script>
+		</body>
+		</html>
