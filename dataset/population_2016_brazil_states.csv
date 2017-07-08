@@ -1,0 +1,35 @@
+location,location_type,value,unit
+Sudeste,region,86356952,pessoas
+Sao Paulo,state,44846530,pessoas
+Minas Gerais,state,21024678,pessoas
+Rio de Janeiro,state,16690709,pessoas
+Espirito Santo,state,3973697,pessoas
+Sul,region,29434773,pessoas
+Rio Grande do Sul,state,11286500,pessoas
+Parana,state,11242720,pessoas
+Santa Catarina,state,6910553,pessoas
+Centro-Oeste,region,15660988,pessoas
+Goias,state,6695855,pessoas
+Distrito Federal,state,2977216,pessoas
+Mato Grosso do Sul,state,2682386,pessoas
+Mato Grosso,state,3305531,pessoas
+Nordeste,region,56915936,pessoas
+Bahia,state,15276566,pessoas
+Pernambuco,state,9410336,pessoas
+Ceara,state,8980879,pessoas
+Para,state,8272724,pessoas
+Maranhao,state,6954036,pessoas
+Paraiba,state,3999415,pessoas
+Rio Grande do Norte,state,3474998,pessoas
+Alagoas,state,3358963,pessoas
+Piaui,state,3212180,pessoas
+Sergipe,state,2265779,pessoas	 
+Norte,region,17707783,pessoas
+Para,state,8272724,pessoas
+Amazonas,state,4001667,pessoas
+Rondonia,state,1787279,pessoas	 
+Tocantins,state,1523902,pessoas	 
+Acre,state,816687,pessoas 
+Amapa,state,782295,pessoas	 
+Roraima,state,514229,pessoas	
+ 	 
