@@ -188,7 +188,7 @@
 		var svg2 = d3.select("#piechart"),
 		width = +svg2.attr("width"),
 		height = +svg2.attr("height"),
-		radius = Math.min(width, height) / 2,
+		radius = Math.min(width, height) / 3,
 		g = svg2.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 		var color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
@@ -233,6 +233,7 @@
 			arc.append("text")
 			.attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
 			.attr("dy", "0.35em")
+			.style('fill', 'White')
 			.text(function(d) { 
 				if(d.data.location_type == "region"){
 					return d.data.location;
