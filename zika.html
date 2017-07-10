@@ -29,6 +29,10 @@
 			text-anchor: middle;
 		}
 
+		.legend {
+ 			 font-size: 12px;
+		}
+
 		.arc path {
 			stroke: #fff;
 		}
@@ -50,10 +54,10 @@
 	<div class="container">
 	  <h3>MicrocefaliaVis</h3>
 	  <ul class="nav nav-tabs">
-	    <li class="active"><a href="main.html">Home</a></li>
-	    <li><a href="zika.html">Zika</a></li>
+	    <li class="active"><a href="zika.html">Zika</a></li>
+	    <li><a href="main.html">Home</a></li>
 	    <li><a href="microcefalia.html">Microcefalia</a></li>
-	    <li><a href="zikavsmicrocefalia.html">Zika VS Microcefalia</a></li>
+	    <li><a href="microvszika.html">Zika VS Microcefalia</a></li>
 	  </ul>
 	  </div>
 
@@ -76,6 +80,7 @@
 
 
 	<script type="text/javascript">
+
 		dictionary = {'02/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv",
 		'23/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-23.csv",
 		'30/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-30.csv",
@@ -85,6 +90,9 @@
 		'28/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-28.csv",
 		'11/06':"./dataset/Brazil_Epidemiological_Bulletin-2016-06-11.csv"};
 
+		var ext_color_domain = [1000, 3000, 4500, 6000, 17500]
+		var legend_labels = ["< 1000", "2000+", "3500+", "5000+", "7500+"] 
+		
 	//Choropleth
 
 		//Define path generator
@@ -102,7 +110,29 @@
 		var w = +svg.attr("width");
 		var h = +svg.attr("height");
 
-		var cloroPlethCScale = d3.scaleLinear().domain([0,2600]).range(["#fee0d2","#fc9272","#de2d26"]);
+		var cloroPlethCScale = d3.scaleLinear().domain([0,2500]).range(["#fee0d2","#fc9272","#de2d26"]);
+
+
+		var legend = svg.selectAll("g.legend")
+		  .data(ext_color_domain)
+		  .enter().append("g")
+		  .attr("class", "legend");
+
+		  var ls_w = 20, ls_h = 20;
+
+		  legend.append("rect")
+		  .attr("x", 20)
+		  .attr("y", function(d, i){ return h - (i*ls_h) - 2*ls_h;})
+		  .attr("width", ls_w)
+		  .attr("height", ls_h)
+		  .style("fill", function(d, i) { return cloroPlethCScale(d); })
+		  .style("opacity", 0.8);
+
+		  legend.append("text")
+		  .attr("x", 50)
+		  .attr("y", function(d, i){ return h - (i*ls_h) - ls_h - 4;})
+		  .text(function(d, i){ return legend_labels[i]; });
+
 
 		//Load in GeoJSON data
 		d3.csv("./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv", function(data) {
