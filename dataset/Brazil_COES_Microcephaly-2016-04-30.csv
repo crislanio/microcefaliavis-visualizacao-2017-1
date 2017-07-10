@@ -1,199 +1,199 @@
-"report_date,""location"",""location_type"",""data_field"",""data_field_code"",""time_period"",""time_period_type"",""value"",""unit"""
-"2016-04-30,""Acre"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""0"",""cases"""
-"2016-04-30,""Alagoas"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""59"",""cases"""
-"2016-04-30,""Amapa"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""4"",""cases"""
-"2016-04-30,""Amazonas"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""4"",""cases"""
-"2016-04-30,""Bahia"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""232"",""cases"""
-"2016-04-30,""Ceara"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""84"",""cases"""
-"2016-04-30,""Distrito Federal"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""5"",""cases"""
-"2016-04-30,""Espirito Santo"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""8"",""cases"""
-"2016-04-30,""Goias"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""12"",""cases"""
-"2016-04-30,""Maranhao"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""115"",""cases"""
-"2016-04-30,""Mato Grosso"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""15"",""cases"""
-"2016-04-30,""Mato Grosso do Sul"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""2"",""cases"""
-"2016-04-30,""Minas Gerais"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""3"",""cases"""
-"2016-04-30,""Para"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""1"",""cases"""
-"2016-04-30,""Paraiba"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""115"",""cases"""
-"2016-04-30,""Parana"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""4"",""cases"""
-"2016-04-30,""Pernambuco"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""339"",""cases"""
-"2016-04-30,""Piaui"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""75"",""cases"""
-"2016-04-30,""Rio Grande do Norte"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""96"",""cases"""
-"2016-04-30,""Rio Grande do Sul"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""2"",""cases"""
-"2016-04-30,""Rio de Janeiro"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""44"",""cases"""
-"2016-04-30,""Rondonia"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""3"",""cases"""
-"2016-04-30,""Roraima"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""1"",""cases"""
-"2016-04-30,""Santa Catarina"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""0"",""cases"""
-"2016-04-30,""Sergipe"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""37"",""cases"""
-"2016-04-30,""Sao Paulo"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""8"",""cases"""
-"2016-04-30,""Tocantins"",""state"",""microcephaly confirmed"",""BR0002"",NA,NA,""3"",""cases"""
-"2016-04-30,""Acre"",""state"",""microcephaly not"",""BR0003"",NA,NA,""17"",""cases"""
-"2016-04-30,""Alagoas"",""state"",""microcephaly not"",""BR0003"",NA,NA,""144"",""cases"""
-"2016-04-30,""Amapa"",""state"",""microcephaly not"",""BR0003"",NA,NA,""1"",""cases"""
-"2016-04-30,""Amazonas"",""state"",""microcephaly not"",""BR0003"",NA,NA,""4"",""cases"""
-"2016-04-30,""Bahia"",""state"",""microcephaly not"",""BR0003"",NA,NA,""184"",""cases"""
-"2016-04-30,""Ceara"",""state"",""microcephaly not"",""BR0003"",NA,NA,""143"",""cases"""
-"2016-04-30,""Distrito Federal"",""state"",""microcephaly not"",""BR0003"",NA,NA,""32"",""cases"""
-"2016-04-30,""Espirito Santo"",""state"",""microcephaly not"",""BR0003"",NA,NA,""33"",""cases"""
-"2016-04-30,""Goias"",""state"",""microcephaly not"",""BR0003"",NA,NA,""45"",""cases"""
-"2016-04-30,""Maranhao"",""state"",""microcephaly not"",""BR0003"",NA,NA,""43"",""cases"""
-"2016-04-30,""Mato Grosso"",""state"",""microcephaly not"",""BR0003"",NA,NA,""77"",""cases"""
-"2016-04-30,""Mato Grosso do Sul"",""state"",""microcephaly not"",""BR0003"",NA,NA,""14"",""cases"""
-"2016-04-30,""Minas Gerais"",""state"",""microcephaly not"",""BR0003"",NA,NA,""55"",""cases"""
-"2016-04-30,""Para"",""state"",""microcephaly not"",""BR0003"",NA,NA,""0"",""cases"""
-"2016-04-30,""Paraiba"",""state"",""microcephaly not"",""BR0003"",NA,NA,""374"",""cases"""
-"2016-04-30,""Parana"",""state"",""microcephaly not"",""BR0003"",NA,NA,""24"",""cases"""
-"2016-04-30,""Pernambuco"",""state"",""microcephaly not"",""BR0003"",NA,NA,""920"",""cases"""
-"2016-04-30,""Piaui"",""state"",""microcephaly not"",""BR0003"",NA,NA,""62"",""cases"""
-"2016-04-30,""Rio Grande do Norte"",""state"",""microcephaly not"",""BR0003"",NA,NA,""39"",""cases"""
-"2016-04-30,""Rio Grande do Sul"",""state"",""microcephaly not"",""BR0003"",NA,NA,""36"",""cases"""
-"2016-04-30,""Rio de Janeiro"",""state"",""microcephaly not"",""BR0003"",NA,NA,""88"",""cases"""
-"2016-04-30,""Rondonia"",""state"",""microcephaly not"",""BR0003"",NA,NA,""5"",""cases"""
-"2016-04-30,""Roraima"",""state"",""microcephaly not"",""BR0003"",NA,NA,""0"",""cases"""
-"2016-04-30,""Santa Catarina"",""state"",""microcephaly not"",""BR0003"",NA,NA,""3"",""cases"""
-"2016-04-30,""Sergipe"",""state"",""microcephaly not"",""BR0003"",NA,NA,""30"",""cases"""
-"2016-04-30,""Sao Paulo"",""state"",""microcephaly not"",""BR0003"",NA,NA,""102"",""cases"""
-"2016-04-30,""Tocantins"",""state"",""microcephaly not"",""BR0003"",NA,NA,""17"",""cases"""
-"2016-04-30,""Acre"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""20"",""cases"""
-"2016-04-30,""Alagoas"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""82"",""cases"""
-"2016-04-30,""Amapa"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""4"",""cases"""
-"2016-04-30,""Amazonas"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""10"",""cases"""
-"2016-04-30,""Bahia"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""645"",""cases"""
-"2016-04-30,""Ceara"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""241"",""cases"""
-"2016-04-30,""Distrito Federal"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""0"",""cases"""
-"2016-04-30,""Espirito Santo"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""93"",""cases"""
-"2016-04-30,""Goias"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""73"",""cases"""
-"2016-04-30,""Maranhao"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""92"",""cases"""
-"2016-04-30,""Mato Grosso"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""120"",""cases"""
-"2016-04-30,""Mato Grosso do Sul"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""2"",""cases"""
-"2016-04-30,""Minas Gerais"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""45"",""cases"""
-"2016-04-30,""Para"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""27"",""cases"""
-"2016-04-30,""Paraiba"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""379"",""cases"""
-"2016-04-30,""Parana"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""5"",""cases"""
-"2016-04-30,""Pernambuco"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""653"",""cases"""
-"2016-04-30,""Piaui"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""23"",""cases"""
-"2016-04-30,""Rio Grande do Norte"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""283"",""cases"""
-"2016-04-30,""Rio Grande do Sul"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""31"",""cases"""
-"2016-04-30,""Rio de Janeiro"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""297"",""cases"""
-"2016-04-30,""Rondonia"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""5"",""cases"""
-"2016-04-30,""Roraima"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""21"",""cases"""
-"2016-04-30,""Santa Catarina"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""2"",""cases"""
-"2016-04-30,""Sergipe"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""146"",""cases"""
-"2016-04-30,""Sao Paulo"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""163"",""cases"""
-"2016-04-30,""Tocantins"",""state"",""microcephaly under investigation"",""BR0001"",NA,NA,""118"",""cases"""
-"2016-04-30,""Acre"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,NA,""municipalities"""
-"2016-04-30,""Alagoas"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""24"",""municipalities"""
-"2016-04-30,""Amapa"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""2"",""municipalities"""
-"2016-04-30,""Amazonas"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""1"",""municipalities"""
-"2016-04-30,""Bahia"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""56"",""municipalities"""
-"2016-04-30,""Ceara"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""38"",""municipalities"""
-"2016-04-30,""Distrito Federal"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""1"",""municipalities"""
-"2016-04-30,""Espirito Santo"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""7"",""municipalities"""
-"2016-04-30,""Goias"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""10"",""municipalities"""
-"2016-04-30,""Maranhao"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""57"",""municipalities"""
-"2016-04-30,""Mato Grosso"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""5"",""municipalities"""
-"2016-04-30,""Mato Grosso do Sul"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""2"",""municipalities"""
-"2016-04-30,""Minas Gerais"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""3"",""municipalities"""
-"2016-04-30,""Para"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""1"",""municipalities"""
-"2016-04-30,""Paraiba"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""46"",""municipalities"""
-"2016-04-30,""Parana"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""4"",""municipalities"""
-"2016-04-30,""Pernambuco"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""101"",""municipalities"""
-"2016-04-30,""Piaui"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""30"",""municipalities"""
-"2016-04-30,""Rio Grande do Norte"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""38"",""municipalities"""
-"2016-04-30,""Rio Grande do Sul"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""2"",""municipalities"""
-"2016-04-30,""Rio de Janeiro"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""10"",""municipalities"""
-"2016-04-30,""Rondonia"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""1"",""municipalities"""
-"2016-04-30,""Roraima"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""1"",""municipalities"""
-"2016-04-30,""Santa Catarina"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,NA,""municipalities"""
-"2016-04-30,""Sergipe"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""19"",""municipalities"""
-"2016-04-30,""Sao Paulo"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""8"",""municipalities"""
-"2016-04-30,""Tocantins"",""state"",""municipality microcephaly"",""BR0004"",NA,NA,""3"",""municipalities"""
-"2016-04-30,""Acre"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""9"",""municipalities"""
-"2016-04-30,""Alagoas"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""71"",""municipalities"""
-"2016-04-30,""Amapa"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""4"",""municipalities"""
-"2016-04-30,""Amazonas"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""4"",""municipalities"""
-"2016-04-30,""Bahia"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""173"",""municipalities"""
-"2016-04-30,""Ceara"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""100"",""municipalities"""
-"2016-04-30,""Distrito Federal"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""1"",""municipalities"""
-"2016-04-30,""Espirito Santo"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""27"",""municipalities"""
-"2016-04-30,""Goias"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""29"",""municipalities"""
-"2016-04-30,""Maranhao"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""82"",""municipalities"""
-"2016-04-30,""Mato Grosso"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""35"",""municipalities"""
-"2016-04-30,""Mato Grosso do Sul"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""10"",""municipalities"""
-"2016-04-30,""Minas Gerais"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""55"",""municipalities"""
-"2016-04-30,""Para"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""22"",""municipalities"""
-"2016-04-30,""Paraiba"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""134"",""municipalities"""
-"2016-04-30,""Parana"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""24"",""municipalities"""
-"2016-04-30,""Pernambuco"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""176"",""municipalities"""
-"2016-04-30,""Piaui"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""64"",""municipalities"""
-"2016-04-30,""Rio Grande do Norte"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""81"",""municipalities"""
-"2016-04-30,""Rio Grande do Sul"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""31"",""municipalities"""
-"2016-04-30,""Rio de Janeiro"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""47"",""municipalities"""
-"2016-04-30,""Rondonia"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""6"",""municipalities"""
-"2016-04-30,""Roraima"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""6"",""municipalities"""
-"2016-04-30,""Santa Catarina"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""5"",""municipalities"""
-"2016-04-30,""Sergipe"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""52"",""municipalities"""
-"2016-04-30,""Sao Paulo"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""79"",""municipalities"""
-"2016-04-30,""Tocantins"",""state"",""municipality microcephaly suspected"",""BR0008"",NA,NA,""49"",""municipalities"""
-"2016-04-30,""Acre"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""0"",""cases"""
-"2016-04-30,""Alagoas"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""3"",""cases"""
-"2016-04-30,""Amapa"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""0"",""cases"""
-"2016-04-30,""Bahia"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""1"",""cases"""
-"2016-04-30,""Ceara"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""14"",""cases"""
-"2016-04-30,""Distrito Federal"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""1"",""cases"""
-"2016-04-30,""Espirito Santo"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""1"",""cases"""
-"2016-04-30,""Goias"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""0"",""cases"""
-"2016-04-30,""Maranhao"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""0"",""cases"""
-"2016-04-30,""Mato Grosso"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""1"",""cases"""
-"2016-04-30,""Minas Gerais"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""1"",""cases"""
-"2016-04-30,""Paraiba"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""10"",""cases"""
-"2016-04-30,""Parana"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""0"",""cases"""
-"2016-04-30,""Pernambuco"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""2"",""cases"""
-"2016-04-30,""Piaui"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""3"",""cases"""
-"2016-04-30,""Rio Grande do Norte"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""12"",""cases"""
-"2016-04-30,""Rio Grande do Sul"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""0"",""cases"""
-"2016-04-30,""Rio de Janeiro"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""2"",""cases"""
-"2016-04-30,""Sergipe"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""6"",""cases"""
-"2016-04-30,""Sao Paulo"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""0"",""cases"""
-"2016-04-30,""Tocantins"",""state"",""microcephaly fatal confirmed"",""BR0006"",NA,NA,""0"",""cases"""
-"2016-04-30,""Acre"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""1"",""cases"""
-"2016-04-30,""Alagoas"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""1"",""cases"""
-"2016-04-30,""Amapa"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""0"",""cases"""
-"2016-04-30,""Bahia"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""1"",""cases"""
-"2016-04-30,""Ceara"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""0"",""cases"""
-"2016-04-30,""Distrito Federal"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""0"",""cases"""
-"2016-04-30,""Espirito Santo"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""0"",""cases"""
-"2016-04-30,""Goias"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""2"",""cases"""
-"2016-04-30,""Maranhao"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""0"",""cases"""
-"2016-04-30,""Mato Grosso"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""3"",""cases"""
-"2016-04-30,""Minas Gerais"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""2"",""cases"""
-"2016-04-30,""Paraiba"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""3"",""cases"""
-"2016-04-30,""Parana"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""2"",""cases"""
-"2016-04-30,""Pernambuco"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""2"",""cases"""
-"2016-04-30,""Piaui"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""3"",""cases"""
-"2016-04-30,""Rio Grande do Norte"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""0"",""cases"""
-"2016-04-30,""Rio Grande do Sul"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""7"",""cases"""
-"2016-04-30,""Rio de Janeiro"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""1"",""cases"""
-"2016-04-30,""Sergipe"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""2"",""cases"""
-"2016-04-30,""Sao Paulo"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""2"",""cases"""
-"2016-04-30,""Tocantins"",""state"",""microcephaly fatal not"",""BR0007"",NA,NA,""0"",""cases"""
-"2016-04-30,""Acre"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""0"",""cases"""
-"2016-04-30,""Alagoas"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""3"",""cases"""
-"2016-04-30,""Amapa"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""1"",""cases"""
-"2016-04-30,""Bahia"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""30"",""cases"""
-"2016-04-30,""Ceara"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""13"",""cases"""
-"2016-04-30,""Distrito Federal"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""0"",""cases"""
-"2016-04-30,""Espirito Santo"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""3"",""cases"""
-"2016-04-30,""Goias"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""3"",""cases"""
-"2016-04-30,""Maranhao"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""7"",""cases"""
-"2016-04-30,""Mato Grosso"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""8"",""cases"""
-"2016-04-30,""Minas Gerais"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""0"",""cases"""
-"2016-04-30,""Paraiba"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""10"",""cases"""
-"2016-04-30,""Parana"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""0"",""cases"""
-"2016-04-30,""Pernambuco"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""50"",""cases"""
-"2016-04-30,""Piaui"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""0"",""cases"""
-"2016-04-30,""Rio Grande do Norte"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""6"",""cases"""
-"2016-04-30,""Rio Grande do Sul"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""2"",""cases"""
-"2016-04-30,""Rio de Janeiro"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""15"",""cases"""
-"2016-04-30,""Sergipe"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""10"",""cases"""
-"2016-04-30,""Sao Paulo"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""2"",""cases"""
-"2016-04-30,""Tocantins"",""state"",""microcephaly fatal under investigation"",""BR0005"",NA,NA,""15"",""cases"""
+report_date,location,location_type,data_field,data_field_code,time_period,time_period_type,value,unit
+2016-04-30,Acre,state,microcephaly confirmed,BR0002,NA,NA,0,cases
+2016-04-30,Alagoas,state,microcephaly confirmed,BR0002,NA,NA,59,cases
+2016-04-30,Amapa,state,microcephaly confirmed,BR0002,NA,NA,4,cases
+2016-04-30,Amazonas,state,microcephaly confirmed,BR0002,NA,NA,4,cases
+2016-04-30,Bahia,state,microcephaly confirmed,BR0002,NA,NA,232,cases
+2016-04-30,Ceara,state,microcephaly confirmed,BR0002,NA,NA,84,cases
+2016-04-30,Distrito Federal,state,microcephaly confirmed,BR0002,NA,NA,5,cases
+2016-04-30,Espirito Santo,state,microcephaly confirmed,BR0002,NA,NA,8,cases
+2016-04-30,Goias,state,microcephaly confirmed,BR0002,NA,NA,12,cases
+2016-04-30,Maranhao,state,microcephaly confirmed,BR0002,NA,NA,115,cases
+2016-04-30,Mato Grosso,state,microcephaly confirmed,BR0002,NA,NA,15,cases
+2016-04-30,Mato Grosso do Sul,state,microcephaly confirmed,BR0002,NA,NA,2,cases
+2016-04-30,Minas Gerais,state,microcephaly confirmed,BR0002,NA,NA,3,cases
+2016-04-30,Para,state,microcephaly confirmed,BR0002,NA,NA,1,cases
+2016-04-30,Paraiba,state,microcephaly confirmed,BR0002,NA,NA,115,cases
+2016-04-30,Parana,state,microcephaly confirmed,BR0002,NA,NA,4,cases
+2016-04-30,Pernambuco,state,microcephaly confirmed,BR0002,NA,NA,339,cases
+2016-04-30,Piaui,state,microcephaly confirmed,BR0002,NA,NA,75,cases
+2016-04-30,Rio Grande do Norte,state,microcephaly confirmed,BR0002,NA,NA,96,cases
+2016-04-30,Rio Grande do Sul,state,microcephaly confirmed,BR0002,NA,NA,2,cases
+2016-04-30,Rio de Janeiro,state,microcephaly confirmed,BR0002,NA,NA,44,cases
+2016-04-30,Rondonia,state,microcephaly confirmed,BR0002,NA,NA,3,cases
+2016-04-30,Roraima,state,microcephaly confirmed,BR0002,NA,NA,1,cases
+2016-04-30,Santa Catarina,state,microcephaly confirmed,BR0002,NA,NA,0,cases
+2016-04-30,Sergipe,state,microcephaly confirmed,BR0002,NA,NA,37,cases
+2016-04-30,Sao Paulo,state,microcephaly confirmed,BR0002,NA,NA,8,cases
+2016-04-30,Tocantins,state,microcephaly confirmed,BR0002,NA,NA,3,cases
+2016-04-30,Acre,state,microcephaly not,BR0003,NA,NA,17,cases
+2016-04-30,Alagoas,state,microcephaly not,BR0003,NA,NA,144,cases
+2016-04-30,Amapa,state,microcephaly not,BR0003,NA,NA,1,cases
+2016-04-30,Amazonas,state,microcephaly not,BR0003,NA,NA,4,cases
+2016-04-30,Bahia,state,microcephaly not,BR0003,NA,NA,184,cases
+2016-04-30,Ceara,state,microcephaly not,BR0003,NA,NA,143,cases
+2016-04-30,Distrito Federal,state,microcephaly not,BR0003,NA,NA,32,cases
+2016-04-30,Espirito Santo,state,microcephaly not,BR0003,NA,NA,33,cases
+2016-04-30,Goias,state,microcephaly not,BR0003,NA,NA,45,cases
+2016-04-30,Maranhao,state,microcephaly not,BR0003,NA,NA,43,cases
+2016-04-30,Mato Grosso,state,microcephaly not,BR0003,NA,NA,77,cases
+2016-04-30,Mato Grosso do Sul,state,microcephaly not,BR0003,NA,NA,14,cases
+2016-04-30,Minas Gerais,state,microcephaly not,BR0003,NA,NA,55,cases
+2016-04-30,Para,state,microcephaly not,BR0003,NA,NA,0,cases
+2016-04-30,Paraiba,state,microcephaly not,BR0003,NA,NA,374,cases
+2016-04-30,Parana,state,microcephaly not,BR0003,NA,NA,24,cases
+2016-04-30,Pernambuco,state,microcephaly not,BR0003,NA,NA,920,cases
+2016-04-30,Piaui,state,microcephaly not,BR0003,NA,NA,62,cases
+2016-04-30,Rio Grande do Norte,state,microcephaly not,BR0003,NA,NA,39,cases
+2016-04-30,Rio Grande do Sul,state,microcephaly not,BR0003,NA,NA,36,cases
+2016-04-30,Rio de Janeiro,state,microcephaly not,BR0003,NA,NA,88,cases
+2016-04-30,Rondonia,state,microcephaly not,BR0003,NA,NA,5,cases
+2016-04-30,Roraima,state,microcephaly not,BR0003,NA,NA,0,cases
+2016-04-30,Santa Catarina,state,microcephaly not,BR0003,NA,NA,3,cases
+2016-04-30,Sergipe,state,microcephaly not,BR0003,NA,NA,30,cases
+2016-04-30,Sao Paulo,state,microcephaly not,BR0003,NA,NA,102,cases
+2016-04-30,Tocantins,state,microcephaly not,BR0003,NA,NA,17,cases
+2016-04-30,Acre,state,microcephaly under investigation,BR0001,NA,NA,20,cases
+2016-04-30,Alagoas,state,microcephaly under investigation,BR0001,NA,NA,82,cases
+2016-04-30,Amapa,state,microcephaly under investigation,BR0001,NA,NA,4,cases
+2016-04-30,Amazonas,state,microcephaly under investigation,BR0001,NA,NA,10,cases
+2016-04-30,Bahia,state,microcephaly under investigation,BR0001,NA,NA,645,cases
+2016-04-30,Ceara,state,microcephaly under investigation,BR0001,NA,NA,241,cases
+2016-04-30,Distrito Federal,state,microcephaly under investigation,BR0001,NA,NA,0,cases
+2016-04-30,Espirito Santo,state,microcephaly under investigation,BR0001,NA,NA,93,cases
+2016-04-30,Goias,state,microcephaly under investigation,BR0001,NA,NA,73,cases
+2016-04-30,Maranhao,state,microcephaly under investigation,BR0001,NA,NA,92,cases
+2016-04-30,Mato Grosso,state,microcephaly under investigation,BR0001,NA,NA,120,cases
+2016-04-30,Mato Grosso do Sul,state,microcephaly under investigation,BR0001,NA,NA,2,cases
+2016-04-30,Minas Gerais,state,microcephaly under investigation,BR0001,NA,NA,45,cases
+2016-04-30,Para,state,microcephaly under investigation,BR0001,NA,NA,27,cases
+2016-04-30,Paraiba,state,microcephaly under investigation,BR0001,NA,NA,379,cases
+2016-04-30,Parana,state,microcephaly under investigation,BR0001,NA,NA,5,cases
+2016-04-30,Pernambuco,state,microcephaly under investigation,BR0001,NA,NA,653,cases
+2016-04-30,Piaui,state,microcephaly under investigation,BR0001,NA,NA,23,cases
+2016-04-30,Rio Grande do Norte,state,microcephaly under investigation,BR0001,NA,NA,283,cases
+2016-04-30,Rio Grande do Sul,state,microcephaly under investigation,BR0001,NA,NA,31,cases
+2016-04-30,Rio de Janeiro,state,microcephaly under investigation,BR0001,NA,NA,297,cases
+2016-04-30,Rondonia,state,microcephaly under investigation,BR0001,NA,NA,5,cases
+2016-04-30,Roraima,state,microcephaly under investigation,BR0001,NA,NA,21,cases
+2016-04-30,Santa Catarina,state,microcephaly under investigation,BR0001,NA,NA,2,cases
+2016-04-30,Sergipe,state,microcephaly under investigation,BR0001,NA,NA,146,cases
+2016-04-30,Sao Paulo,state,microcephaly under investigation,BR0001,NA,NA,163,cases
+2016-04-30,Tocantins,state,microcephaly under investigation,BR0001,NA,NA,118,cases
+2016-04-30,Acre,state,municipality microcephaly,BR0004,NA,NA,NA,municipalities
+2016-04-30,Alagoas,state,municipality microcephaly,BR0004,NA,NA,24,municipalities
+2016-04-30,Amapa,state,municipality microcephaly,BR0004,NA,NA,2,municipalities
+2016-04-30,Amazonas,state,municipality microcephaly,BR0004,NA,NA,1,municipalities
+2016-04-30,Bahia,state,municipality microcephaly,BR0004,NA,NA,56,municipalities
+2016-04-30,Ceara,state,municipality microcephaly,BR0004,NA,NA,38,municipalities
+2016-04-30,Distrito Federal,state,municipality microcephaly,BR0004,NA,NA,1,municipalities
+2016-04-30,Espirito Santo,state,municipality microcephaly,BR0004,NA,NA,7,municipalities
+2016-04-30,Goias,state,municipality microcephaly,BR0004,NA,NA,10,municipalities
+2016-04-30,Maranhao,state,municipality microcephaly,BR0004,NA,NA,57,municipalities
+2016-04-30,Mato Grosso,state,municipality microcephaly,BR0004,NA,NA,5,municipalities
+2016-04-30,Mato Grosso do Sul,state,municipality microcephaly,BR0004,NA,NA,2,municipalities
+2016-04-30,Minas Gerais,state,municipality microcephaly,BR0004,NA,NA,3,municipalities
+2016-04-30,Para,state,municipality microcephaly,BR0004,NA,NA,1,municipalities
+2016-04-30,Paraiba,state,municipality microcephaly,BR0004,NA,NA,46,municipalities
+2016-04-30,Parana,state,municipality microcephaly,BR0004,NA,NA,4,municipalities
+2016-04-30,Pernambuco,state,municipality microcephaly,BR0004,NA,NA,101,municipalities
+2016-04-30,Piaui,state,municipality microcephaly,BR0004,NA,NA,30,municipalities
+2016-04-30,Rio Grande do Norte,state,municipality microcephaly,BR0004,NA,NA,38,municipalities
+2016-04-30,Rio Grande do Sul,state,municipality microcephaly,BR0004,NA,NA,2,municipalities
+2016-04-30,Rio de Janeiro,state,municipality microcephaly,BR0004,NA,NA,10,municipalities
+2016-04-30,Rondonia,state,municipality microcephaly,BR0004,NA,NA,1,municipalities
+2016-04-30,Roraima,state,municipality microcephaly,BR0004,NA,NA,1,municipalities
+2016-04-30,Santa Catarina,state,municipality microcephaly,BR0004,NA,NA,NA,municipalities
+2016-04-30,Sergipe,state,municipality microcephaly,BR0004,NA,NA,19,municipalities
+2016-04-30,Sao Paulo,state,municipality microcephaly,BR0004,NA,NA,8,municipalities
+2016-04-30,Tocantins,state,municipality microcephaly,BR0004,NA,NA,3,municipalities
+2016-04-30,Acre,state,municipality microcephaly suspected,BR0008,NA,NA,9,municipalities
+2016-04-30,Alagoas,state,municipality microcephaly suspected,BR0008,NA,NA,71,municipalities
+2016-04-30,Amapa,state,municipality microcephaly suspected,BR0008,NA,NA,4,municipalities
+2016-04-30,Amazonas,state,municipality microcephaly suspected,BR0008,NA,NA,4,municipalities
+2016-04-30,Bahia,state,municipality microcephaly suspected,BR0008,NA,NA,173,municipalities
+2016-04-30,Ceara,state,municipality microcephaly suspected,BR0008,NA,NA,100,municipalities
+2016-04-30,Distrito Federal,state,municipality microcephaly suspected,BR0008,NA,NA,1,municipalities
+2016-04-30,Espirito Santo,state,municipality microcephaly suspected,BR0008,NA,NA,27,municipalities
+2016-04-30,Goias,state,municipality microcephaly suspected,BR0008,NA,NA,29,municipalities
+2016-04-30,Maranhao,state,municipality microcephaly suspected,BR0008,NA,NA,82,municipalities
+2016-04-30,Mato Grosso,state,municipality microcephaly suspected,BR0008,NA,NA,35,municipalities
+2016-04-30,Mato Grosso do Sul,state,municipality microcephaly suspected,BR0008,NA,NA,10,municipalities
+2016-04-30,Minas Gerais,state,municipality microcephaly suspected,BR0008,NA,NA,55,municipalities
+2016-04-30,Para,state,municipality microcephaly suspected,BR0008,NA,NA,22,municipalities
+2016-04-30,Paraiba,state,municipality microcephaly suspected,BR0008,NA,NA,134,municipalities
+2016-04-30,Parana,state,municipality microcephaly suspected,BR0008,NA,NA,24,municipalities
+2016-04-30,Pernambuco,state,municipality microcephaly suspected,BR0008,NA,NA,176,municipalities
+2016-04-30,Piaui,state,municipality microcephaly suspected,BR0008,NA,NA,64,municipalities
+2016-04-30,Rio Grande do Norte,state,municipality microcephaly suspected,BR0008,NA,NA,81,municipalities
+2016-04-30,Rio Grande do Sul,state,municipality microcephaly suspected,BR0008,NA,NA,31,municipalities
+2016-04-30,Rio de Janeiro,state,municipality microcephaly suspected,BR0008,NA,NA,47,municipalities
+2016-04-30,Rondonia,state,municipality microcephaly suspected,BR0008,NA,NA,6,municipalities
+2016-04-30,Roraima,state,municipality microcephaly suspected,BR0008,NA,NA,6,municipalities
+2016-04-30,Santa Catarina,state,municipality microcephaly suspected,BR0008,NA,NA,5,municipalities
+2016-04-30,Sergipe,state,municipality microcephaly suspected,BR0008,NA,NA,52,municipalities
+2016-04-30,Sao Paulo,state,municipality microcephaly suspected,BR0008,NA,NA,79,municipalities
+2016-04-30,Tocantins,state,municipality microcephaly suspected,BR0008,NA,NA,49,municipalities
+2016-04-30,Acre,state,microcephaly fatal confirmed,BR0006,NA,NA,0,cases
+2016-04-30,Alagoas,state,microcephaly fatal confirmed,BR0006,NA,NA,3,cases
+2016-04-30,Amapa,state,microcephaly fatal confirmed,BR0006,NA,NA,0,cases
+2016-04-30,Bahia,state,microcephaly fatal confirmed,BR0006,NA,NA,1,cases
+2016-04-30,Ceara,state,microcephaly fatal confirmed,BR0006,NA,NA,14,cases
+2016-04-30,Distrito Federal,state,microcephaly fatal confirmed,BR0006,NA,NA,1,cases
+2016-04-30,Espirito Santo,state,microcephaly fatal confirmed,BR0006,NA,NA,1,cases
+2016-04-30,Goias,state,microcephaly fatal confirmed,BR0006,NA,NA,0,cases
+2016-04-30,Maranhao,state,microcephaly fatal confirmed,BR0006,NA,NA,0,cases
+2016-04-30,Mato Grosso,state,microcephaly fatal confirmed,BR0006,NA,NA,1,cases
+2016-04-30,Minas Gerais,state,microcephaly fatal confirmed,BR0006,NA,NA,1,cases
+2016-04-30,Paraiba,state,microcephaly fatal confirmed,BR0006,NA,NA,10,cases
+2016-04-30,Parana,state,microcephaly fatal confirmed,BR0006,NA,NA,0,cases
+2016-04-30,Pernambuco,state,microcephaly fatal confirmed,BR0006,NA,NA,2,cases
+2016-04-30,Piaui,state,microcephaly fatal confirmed,BR0006,NA,NA,3,cases
+2016-04-30,Rio Grande do Norte,state,microcephaly fatal confirmed,BR0006,NA,NA,12,cases
+2016-04-30,Rio Grande do Sul,state,microcephaly fatal confirmed,BR0006,NA,NA,0,cases
+2016-04-30,Rio de Janeiro,state,microcephaly fatal confirmed,BR0006,NA,NA,2,cases
+2016-04-30,Sergipe,state,microcephaly fatal confirmed,BR0006,NA,NA,6,cases
+2016-04-30,Sao Paulo,state,microcephaly fatal confirmed,BR0006,NA,NA,0,cases
+2016-04-30,Tocantins,state,microcephaly fatal confirmed,BR0006,NA,NA,0,cases
+2016-04-30,Acre,state,microcephaly fatal not,BR0007,NA,NA,1,cases
+2016-04-30,Alagoas,state,microcephaly fatal not,BR0007,NA,NA,1,cases
+2016-04-30,Amapa,state,microcephaly fatal not,BR0007,NA,NA,0,cases
+2016-04-30,Bahia,state,microcephaly fatal not,BR0007,NA,NA,1,cases
+2016-04-30,Ceara,state,microcephaly fatal not,BR0007,NA,NA,0,cases
+2016-04-30,Distrito Federal,state,microcephaly fatal not,BR0007,NA,NA,0,cases
+2016-04-30,Espirito Santo,state,microcephaly fatal not,BR0007,NA,NA,0,cases
+2016-04-30,Goias,state,microcephaly fatal not,BR0007,NA,NA,2,cases
+2016-04-30,Maranhao,state,microcephaly fatal not,BR0007,NA,NA,0,cases
+2016-04-30,Mato Grosso,state,microcephaly fatal not,BR0007,NA,NA,3,cases
+2016-04-30,Minas Gerais,state,microcephaly fatal not,BR0007,NA,NA,2,cases
+2016-04-30,Paraiba,state,microcephaly fatal not,BR0007,NA,NA,3,cases
+2016-04-30,Parana,state,microcephaly fatal not,BR0007,NA,NA,2,cases
+2016-04-30,Pernambuco,state,microcephaly fatal not,BR0007,NA,NA,2,cases
+2016-04-30,Piaui,state,microcephaly fatal not,BR0007,NA,NA,3,cases
+2016-04-30,Rio Grande do Norte,state,microcephaly fatal not,BR0007,NA,NA,0,cases
+2016-04-30,Rio Grande do Sul,state,microcephaly fatal not,BR0007,NA,NA,7,cases
+2016-04-30,Rio de Janeiro,state,microcephaly fatal not,BR0007,NA,NA,1,cases
+2016-04-30,Sergipe,state,microcephaly fatal not,BR0007,NA,NA,2,cases
+2016-04-30,Sao Paulo,state,microcephaly fatal not,BR0007,NA,NA,2,cases
+2016-04-30,Tocantins,state,microcephaly fatal not,BR0007,NA,NA,0,cases
+2016-04-30,Acre,state,microcephaly fatal under investigation,BR0005,NA,NA,0,cases
+2016-04-30,Alagoas,state,microcephaly fatal under investigation,BR0005,NA,NA,3,cases
+2016-04-30,Amapa,state,microcephaly fatal under investigation,BR0005,NA,NA,1,cases
+2016-04-30,Bahia,state,microcephaly fatal under investigation,BR0005,NA,NA,30,cases
+2016-04-30,Ceara,state,microcephaly fatal under investigation,BR0005,NA,NA,13,cases
+2016-04-30,Distrito Federal,state,microcephaly fatal under investigation,BR0005,NA,NA,0,cases
+2016-04-30,Espirito Santo,state,microcephaly fatal under investigation,BR0005,NA,NA,3,cases
+2016-04-30,Goias,state,microcephaly fatal under investigation,BR0005,NA,NA,3,cases
+2016-04-30,Maranhao,state,microcephaly fatal under investigation,BR0005,NA,NA,7,cases
+2016-04-30,Mato Grosso,state,microcephaly fatal under investigation,BR0005,NA,NA,8,cases
+2016-04-30,Minas Gerais,state,microcephaly fatal under investigation,BR0005,NA,NA,0,cases
+2016-04-30,Paraiba,state,microcephaly fatal under investigation,BR0005,NA,NA,10,cases
+2016-04-30,Parana,state,microcephaly fatal under investigation,BR0005,NA,NA,0,cases
+2016-04-30,Pernambuco,state,microcephaly fatal under investigation,BR0005,NA,NA,50,cases
+2016-04-30,Piaui,state,microcephaly fatal under investigation,BR0005,NA,NA,0,cases
+2016-04-30,Rio Grande do Norte,state,microcephaly fatal under investigation,BR0005,NA,NA,6,cases
+2016-04-30,Rio Grande do Sul,state,microcephaly fatal under investigation,BR0005,NA,NA,2,cases
+2016-04-30,Rio de Janeiro,state,microcephaly fatal under investigation,BR0005,NA,NA,15,cases
+2016-04-30,Sergipe,state,microcephaly fatal under investigation,BR0005,NA,NA,10,cases
+2016-04-30,Sao Paulo,state,microcephaly fatal under investigation,BR0005,NA,NA,2,cases
+2016-04-30,Tocantins,state,microcephaly fatal under investigation,BR0005,NA,NA,15,cases
