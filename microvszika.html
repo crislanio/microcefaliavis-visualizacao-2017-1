@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MicrocefaliaVis</title>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="//d3js.org/queue.v1.min.js"></script>
+		<style type="text/css">
+			.line {
+				fill: none;
+				stroke: steelblue;
+				stroke-width: 1.5px;
+			}
+		</style>
+	</head>
+	<body>
+		<svg id="lineChart" width="1200" height="500"></svg>
+		<script type="text/javascript">
+
+			dictionary = {'02/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv",
+			'23/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-23.csv",
+			'30/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-30.csv",
+			'07/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-07.csv",
+			'14/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-14.csv",
+			'21/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-21.csv",
+			'28/05':"./dataset/Brazil_Epidemiological_Bulletin-2016-05-28.csv",
+			'11/06':"./dataset/Brazil_Epidemiological_Bulletin-2016-06-11.csv"};
+
+			d3.queue()
+				.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-23.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-04-30.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-07.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-14.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-21.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-05-28.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_Epidemiological_Bulletin-2016-06-11.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_COES_Microcephaly-2016-04-02.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_COES_Microcephaly-2016-04-23.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_COES_Microcephaly-2016-04-30.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_COES_Microcephaly-2016-05-07.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_COES_Microcephaly-2016-05-14.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_COES_Microcephaly-2016-05-21.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_COES_Microcephaly-2016-05-28.csv"+'?' + Math.floor(Math.random() * 1000))
+				.defer(d3.csv,"./dataset/Brazil_COES_Microcephaly-2016-06-11.csv"+'?' + Math.floor(Math.random() * 1000))
+				.await(makeLineChart);
+
+			function makeLineChart(err,zica1,zica2,zica3,zica4,zica5,zica6,zica7,zica8,micro1,micro2,micro3,micro4,micro5,micro6,micro7,micro8){
+				var zicaData = [];
+				zicaData = parseZicaData(zica1,zicaData,0);
+				zicaData = parseZicaData(zica2,zicaData,1);
+				zicaData = parseZicaData(zica3,zicaData,2);
+				zicaData = parseZicaData(zica4,zicaData,3);
+				zicaData = parseZicaData(zica5,zicaData,4);
+				zicaData = parseZicaData(zica6,zicaData,5);
+				zicaData = parseZicaData(zica7,zicaData,6);
+				zicaData = parseZicaData(zica8,zicaData,7);
+
+				var microData = {casosDescartados:{}, casosConfirmados:{}};
+				microData = parseMicroData(micro1,microData,0);
+				microData = parseMicroData(micro2,microData,1);
+				microData = parseMicroData(micro3,microData,2);
+				microData = parseMicroData(micro4,microData,3);
+				microData = parseMicroData(micro5,microData,4);
+				microData = parseMicroData(micro6,microData,5);
+				microData = parseMicroData(micro7,microData,6);
+				microData = parseMicroData(micro8,microData,7);
+
+				zicaArray = [];
+				for(var property in zicaData){
+					var element = {id:property, values:zicaData[property]};
+					zicaArray.push(element);
+				}
+
+				microArrayDescartados = [];
+				for(var property in microData.casosDescartados){
+					var element = {tipo:"casosDescartados",id:property, values:microData.casosDescartados[property]};
+					microArrayDescartados.push(element);
+				}
+
+
+				microArrayConfirmados = [];
+				for(var property in microData.casosConfirmados){
+					var element = {tipo:"casosConfirmados",id:property, values:microData.casosConfirmados[property]};
+					microArrayConfirmados.push(element);
+				}
+
+				renderLineChart(zicaArray, microArrayDescartados, microArrayConfirmados);
+			}
+
+			function parseZicaData(dataArray, processedData, dayIndex){
+				//[{id:nomeRegiao, values:[{date:data, casos:casos}]}]
+				var parseTime = d3.timeParse("%d/%m/%Y");
+				dataArray = dataArray.filter(function(item,index,arr){return item.location_type == "country";}); //comentar aqui se quiser mostrar todos estados
+				dataArray.forEach(function(d,i){
+					var location = d.location + " Zyka";
+					if(!processedData[location]){
+						processedData[location] = [];
+					}
+					
+					processedData[location].push({date:parseTime(Object.keys(dictionary)[dayIndex] + "/2016"),casos:parseInt(d.value)});
+				});
+				return processedData;
+			}
+
+			function parseMicroData(dataArray, processedData,dayIndex){
+				var parseTime = d3.timeParse("%d/%m/%Y");
+				dataArray = dataArray.filter(function(item,index,arr){return ((item.data_field_code == "BR0003") 
+					||  (item.data_field_code == "BR0007") 
+					||  (item.data_field_code == "BR0002") 
+					||  (item.data_field_code == "BR0006"));});
+
+				casosDescartados = dataArray.filter(function(item,index,arr){return item.data_field_code == "BR0003"
+					||  item.data_field_code == "BR0007";});
+
+				casosConfirmados = dataArray.filter(function(item,index,arr){return item.data_field_code == "BR0002"
+					||  item.data_field_code == "BR0006";});
+
+				casosDescartados.forEach(function(d,i){	
+					var location = d.location + " Microcefalia Descartados";
+					if(!processedData.casosDescartados[location]){
+						processedData.casosDescartados[location] = [];
+					}
+
+					var obj = processedData.casosDescartados[location].filter(function(el){return el.date == parseTime(Object.keys(dictionary)[dayIndex] + "/2016").toString();});
+
+					if(obj.length != 0){
+						obj.casos += parseInt(d.value);	
+					}else{
+						processedData.casosDescartados[location].push({date:parseTime(Object.keys(dictionary)[dayIndex] + "/2016"),casos:parseInt(d.value)});	
+					}
+				});
+
+				casosConfirmados.forEach(function(d,i){
+					var location = d.location + " Microcefalia Confirmados";
+					if(!processedData.casosConfirmados[location]){
+						processedData.casosConfirmados[location] = [];
+					}
+					var obj = processedData.casosConfirmados[location].filter(function(el){return el.date == parseTime(Object.keys(dictionary)[dayIndex] + "/2016").toString();});
+					if(obj.length != 0){
+						obj.casos += parseInt(d.value);	
+					}else{
+						processedData.casosConfirmados[location].push({date:parseTime(Object.keys(dictionary)[dayIndex] + "/2016"),casos:parseInt(d.value)});	
+					}
+				});
+				return processedData;
+			}
+
+
+
+			function renderLineChart(zicaArray, microArrayDescartados, microArrayConfirmados){
+				microArrayDescartados = sumAllCases(microArrayDescartados);//.id = "Brazil Microcefalia Descartados";
+				microArrayConfirmados = sumAllCases(microArrayConfirmados);//.id = "Brazil Microcefalia Confirmados";
+				microArrayConfirmados.id = "Brazil Microcefalia Descartados";
+				microArrayDescartados.id = "Brazil Microcefalia Confirmados";
+
+				processedData = zicaArray.concat(microArrayConfirmados,microArrayDescartados);
+				var svg2 = d3.select("#lineChart"),
+				margin = {top: 20, right: 80, bottom: 30, left: 50},
+				width = svg2.attr("width") - margin.left - margin.right,
+				height = svg2.attr("height") - margin.top - margin.bottom,
+				g = svg2.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+				var x = d3.scaleTime().range([0, width]),
+				y = d3.scaleLinear().range([height, 0]),
+				colorScaleLine = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+				var line = d3.line()
+				.curve(d3.curveBasis)
+				.x(function(d) { return x(d.date); })
+				.y(function(d) { return y(d.casos); });
+
+				valuesArray = processedData.map(function(c){return c.values});
+				var flattenedArray =[].concat.apply([], valuesArray);
+
+				debugger
+				x.domain(d3.extent(flattenedArray, function(d) { return d.date; }));
+
+				y.domain([
+					d3.min(processedData, function(c) { return d3.min(c.values, function(d) { return d.casos; }); }),
+					d3.max(processedData, function(c) { return d3.max(c.values, function(d) { return d.casos; }); })
+				]);
+
+				colorScaleLine.domain(processedData.map(function(c) { return c.id; }));
+
+				g.append("g")
+				.attr("class", "axis axis--x")
+				.attr("transform", "translate(0," + height + ")")
+				.call(d3.axisBottom(x));
+
+				g.append("g")
+				.attr("class", "axis axis--y")
+				.call(d3.axisLeft(y))
+				.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 6)
+				.attr("dy", "0.71em")
+				.attr("fill", "#000")
+				.text("Nº de Casos");
+
+				var region = g.selectAll(".region")
+				.data(processedData)
+				.enter().append("g")
+				.attr("class", "region");
+
+				region.append("path")
+				.attr("class", "line")
+				.attr("d", function(d) { return line(d.values); })
+				.style("stroke", function(d) { return colorScaleLine(d.id); });
+
+				region.append("text")
+				.datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+				.attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.casos) + ")"; })
+				.attr("x", 3)
+				.attr("dy", "0.35em")
+				.style("font", "10px sans-serif")
+				.text(function(d) { return d.id; });
+			}
+
+			function sumAllCases(array){
+				var parseTime = d3.timeParse("%d/%m/%Y");
+				var returnObject =  {};
+				returnObject.values = [];
+				debugger
+				Object.keys(dictionary).forEach(function(key){
+					returnObject.values.push({date: parseTime(key + "/2016") , casos:0	});
+				});
+
+				array.forEach(function(el){
+					el.values.forEach(function(element, index){
+						returnObject.values[index].casos += element.casos;	
+				})});
+
+				return returnObject;
+			}
+		</script>
+	</body>
+</html>
