@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//d3js.org/queue.v1.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+	<style type="text/css">
+		div.tooltip {
+			position: absolute;
+			text-align: center;
+			padding: 4px;
+			font: 12px sans-serif;
+			background: black;
+			border: 0px;
+			border-radius: 4px;
+			pointer-events: none;
+			color:white;
+		}
+		body > *{
+			float: left;
+		}
+		
+		.states {
+		  fill: #ccc;
+		  stroke: #fff;
+		}
+
+		.symbol {
+		  fill: red;
+		  fill-opacity: .8;
+		  stroke: #fff;
+		}
+		.pieArc{
+			stroke: black;
+			stroke-width: 0.3px;
+		}
+		select{
+			margin: 5px 5px 5px 5px;
+		}
+	</style>
+	<title>MicrocefaliaVis</title>
+</head>
+
+<body>
+	<div class="container">
+	  <h3>MicrocefaliaVis</h3>
+	  <ul class="nav nav-tabs">
+	    <li><a href="main.html">Home</a></li>
+	    <li><a href="zika.html">Zika</a></li>
+	    <li class="active"><a href="microcefalia.html">Microcefalia</a></li>
+	    <li><a href="zikavsmicrocefalia.html">Zika VS Microcefalia</a></li>
+	  </ul>
+	  </div>
+
+    <select id="select-index" onchange="updateData()">
+		<option value="0">Boletim Epidemiológico 02/04/2016</option>
+		<option value="1">Boletim Epidemiológico 23/04/2016</option>
+		<option value="2">Boletim Epidemiológico 30/04/2016</option>
+		<option value="3">Boletim Epidemiológico 07/05/2016</option>
+		<option value="4">Boletim Epidemiológico 14/05/2016</option>
+		<option value="5">Boletim Epidemiológico 21/05/2016</option>
+		<option value="6">Boletim Epidemiológico 28/05/2016</option>
+		<option value="7">Boletim Epidemiológico 11/06/2016</option>
+	</select>
+    
+    <select id="select-fatal" onchange="updateData()">
+		<option value="fatal">Casos fatais</option>
+		<option value="not-fatal">Casos não fatais</option>
+	</select>
+
+	<svg id="symbolMap" width="1000" height="600"></svg>
+
+
+	<script type="text/javascript">
+		dictionary = 
+		{'02/04':"./dataset/Brazil_COES_Microcephaly-2016-04-02.csv",
+		'23/04':"./dataset/Brazil_COES_Microcephaly-2016-04-23.csv",
+		'30/04':"./dataset/Brazil_COES_Microcephaly-2016-04-30.csv",
+		'07/05':"./dataset/Brazil_COES_Microcephaly-2016-05-07.csv",
+		'14/05':"./dataset/Brazil_COES_Microcephaly-2016-05-14.csv",
+		'21/05':"./dataset/Brazil_COES_Microcephaly-2016-05-21.csv",
+		'28/05':"./dataset/Brazil_COES_Microcephaly-2016-05-28.csv",
+		'11/06':"./dataset/Brazil_COES_Microcephaly-2016-06-11.csv"};
+
+		//Define path generator
+		var projection = d3.geoStereographic();
+		var path = d3.geoPath()
+		.projection(projection);
+
+		//Tooltip div
+		var div = d3.select("body").append("div")
+		.attr("class", "tooltip")
+		.style("opacity", 0);
+		
+		//zoom def
+		const zoom = d3.zoom()
+	      .scaleExtent([1/4, 9])
+	      .on('zoom', zoomed); 
+
+		//Create SVG element
+		var svg = d3.select("#symbolMap").call(zoom);
+		var w = +svg.attr("width");
+		var h = +svg.attr("height");
+		var mapGroup = svg.append("g"); //map
+		var pieGroup = svg.append("g"); //pie
+
+		// Pie chart variables:
+		var tempRadius = 5;
+
+        var pieData = d3.pie()
+          .value(function(d) { return d.casos; });
+
+		var arc = d3.arc()
+			.innerRadius(0)
+			.outerRadius(function(d){
+				return d.data.pieSize;
+			});
+
+		var color = d3.scaleOrdinal(d3.schemeSet1);
+
+		//legenda
+		var ext_color_domain = ["BR0005", "BR0006", "BR0007", "BR0001", "BR0002", "BR0003"];
+ 		var legend_labels = 
+ 			["Casos de microcefalia fatal em investigação",
+ 			 "Casos de microcefalia confirmados",
+ 			 "Casos de microcefalia fatal descartados",
+ 			 "Casos de microcefalia em investigação",
+ 			 "Casos de microcefalia confirmados",
+ 			 "Casos de microcefalia descartados"];
+
+		var legend = svg.selectAll("g.legend")
+		  .data(ext_color_domain)
+		  .enter().append("g")
+		  .attr("class", "legend");
+
+		  var ls_w = 20, ls_h = 20;
+
+		  legend.append("rect")
+		  .attr("x", 20)
+		  .attr("y", function(d, i){ return h - (i*ls_h) - 2*ls_h;})
+		  .attr("width", ls_w)
+		  .attr("height", ls_h)
+		  .style("fill", function(d, i) { return color(d); })
+		  .style("opacity", 0.8);
+
+		  legend.append("text")
+		  .attr("x", 50)
+		  .attr("y", function(d, i){ return h - (i*ls_h) - ls_h - 4;})
+		  .text(function(d, i){ return legend_labels[i]; });			
+
+		//load files
+		d3.queue()
+		.defer(d3.json,"brazil-states.json")
+		.defer(d3.csv, dictionary["02/04"])
+		.defer(d3.csv, dictionary["23/04"])
+		.defer(d3.csv, dictionary["30/04"])
+		.defer(d3.csv, dictionary["07/05"])
+		.defer(d3.csv, dictionary["14/05"])
+		.defer(d3.csv, dictionary["21/05"])
+		.defer(d3.csv, dictionary["28/05"])
+		.defer(d3.csv, dictionary["11/06"])
+		.await(renderScreen);
+
+		function updateData(){
+			debugger
+			var indexVal = $('#select-index').val();
+			var fatalVal = $('#select-fatal').val();
+			renderPieCharts(indexVal, fatalVal == "fatal");
+		}
+
+		function renderScreen(err, geojson,micro1,micro2,micro3,micro4,micro5,micro6,micro7,micro8){
+			renderMap(geojson);
+			centroidMap = calculateCentroidMap(geojson);
+			microData = parseData(micro1,micro2,micro3,micro4,micro5,micro6,micro7,micro8,centroidMap);
+			renderPieCharts(0, true);
+		}
+
+		function renderPieCharts(index,isFatal){
+			var object = microData[index];
+			var states; //{"state": [{casos, field_code}]}
+			if(isFatal){
+				states = object["casosFatais"];
+			}else{
+				states = object["casosNaoFatais"];
+			}
+
+			states = arrayFy(states);
+			pieGroup.selectAll('.pie').remove();
+
+			states.sort(function(x,y){ //sort states to better show the little sector charts
+				return d3.descending(sumSectorCases(x.sectors), sumSectorCases(y.sectors));
+			});
+
+			//update the domain scale here, get the first state and last one and check sumSectorCases
+			metorScale = d3.scaleLinear().domain([sumSectorCases(states[states.length -1].sectors), [sumSectorCases(states[0].sectors)]]).range([5,20]);
+			//sort states
+			var pies = pieGroup.selectAll('.pie')
+			.data(states)
+			.enter()
+		    .append('g')
+		    .attr('class', 'pie')
+		    .attr("transform", function(d) {
+		      return "translate(" + projection(centroidMap[d.state])[0] + "," + projection(centroidMap[d.state])[1] + ")";
+		    });		    
+
+		    pies.selectAll('.slice')
+			    .data(function(d){
+			    	var pieSize = metorScale(sumSectorCases(d.sectors));
+	                d.sectors.map(function (t) { t.pieSize = pieSize; t.state = d.state; return t; })
+			        return  pieData(d.sectors);
+			    // 	console.log(d);
+			    // return pie([d.sectors[0].casos, d.sectors[1].casos, d.sectors[2].casos]); 
+			}).enter()
+		    .append('path')
+		    .attr('d',  arc)
+		    .attr('class', 'pieArc')
+		    .style('fill', function(d,i){
+		      return color(d.data.field_code);
+		  	})
+		  	.on("mousemove" , function(d) {
+		       div.transition()
+		         .duration(200)
+		         .style("opacity", .9);
+		       div.html(d.data.state + "</br>" + d.data.casos + (d.data.casos > 1 ? " casos" : " caso"))
+		         .style("left", (d3.event.pageX) + "px")
+		         .style("top", (d3.event.pageY - 28) + "px");
+		       })
+		    .on("mouseout", function(d) {
+		        div.transition()
+		        .duration(500)
+		        .style("opacity", 0);
+	        });
+		}
+
+
+		function arrayFy(object){
+			var array = [];
+			for (var state in object) {
+			    if (object.hasOwnProperty(state)) {
+			        array.push({state:state, sectors: object[state]});
+			    }
+			}
+			return array;
+		}
+
+
+		function renderMap(json){
+			//renders the map
+			projection.fitSize([w,h],json); //escala o mapa para ocupar todo o svg
+			
+			mapGroup.selectAll("path")
+			.data(json.features)
+			.enter()
+			.append("path")
+			.attr("d", path)
+			.attr("class", "states");
+
+			
+
+			// pieGroup.selectAll(".symbol")
+			// 	.data(centroids.features)
+			// 	.enter().append("path")
+			// 	.attr("class", "symbol")
+			// 	.attr("d", path.pointRadius(function(d){return 5;}));
+
+			/*.on("mousemove", function(d) {
+				div.transition()
+				.duration(200)
+				.style("opacity", .9);
+				div.html(d.properties.name + "<br/>" + d.properties.value + " casos")
+				.style("left", (d3.event.pageX) + "px")
+				.style("top", (d3.event.pageY - 28) + "px");
+			})
+			.on("mouseout", function(d) {
+				div.transition()
+				.duration(500)
+				.style("opacity", 0);
+			});*/
+		}
+
+
+
+		function parseData(micro1,micro2,micro3,micro4,micro5,micro6,micro7,micro8, centroidMap){
+				var microDataArray = [];
+				microDataArray.push(parseMicroData(micro1,0));
+				microDataArray.push(parseMicroData(micro2,1));
+				microDataArray.push(parseMicroData(micro3,2));
+				microDataArray.push(parseMicroData(micro4,3));
+				microDataArray.push(parseMicroData(micro5,4));
+				microDataArray.push(parseMicroData(micro6,5));
+				microDataArray.push(parseMicroData(micro7,6));
+				microDataArray.push(parseMicroData(micro8,7));
+
+				// microArrayFatais = [];
+				// for(var property in microData.casosFatais){
+				// 	var element = {tipo:"casosFatais",id:property, values:microData.casosFatais[property]};
+				// 	microArrayFatais.push(element);
+				// }
+
+				// microArrayNaoFatais = [];
+				// for(var property in microData.casosNaoFatais){
+				// 	var element = {tipo:"casosNaoFatais",id:property, values:microData.casosNaoFatais[property]};
+				// 	microArrayNaoFatais.push(element);
+				// }
+
+				return microDataArray;
+		}
+
+		function parseMicroData(dataArray,dayIndex){
+				var processedData = {casosFatais:{}, casosNaoFatais:{}};
+				var parseTime = d3.timeParse("%d/%m/%Y");
+				dataArray = dataArray.filter(function(item,index,arr){return (
+					(item.data_field_code == "BR0003") 
+					|| (item.data_field_code == "BR0007") 
+					|| (item.data_field_code == "BR0002") 
+					|| (item.data_field_code == "BR0005")
+					|| (item.data_field_code == "BR0006")
+					|| (item.data_field_code == "BR0001"));
+				});
+
+				casosFatais = dataArray.filter(function(item,index,arr){
+					return item.data_field_code == "BR0005"
+					||  item.data_field_code == "BR0006"
+					||  item.data_field_code == "BR0007";
+				});
+
+				casosNaoFatais = dataArray.filter(function(item,index){
+					return item.data_field_code == "BR0001"
+					||  item.data_field_code == "BR0002"
+					||  item.data_field_code == "BR0003";
+				});
+
+				casosFatais.forEach(function(d,i){	
+					var location = d.location;
+					if(!processedData.casosFatais[location]){
+						processedData.casosFatais[location] = [];
+					}
+					if(d.value > 0){
+						processedData.casosFatais[location].push({casos:parseInt(d.value),
+						field_code: d.data_field_code});	
+					}
+				});
+
+				casosNaoFatais.forEach(function(d,i){
+					var location = d.location;
+					if(!processedData.casosNaoFatais[location]){
+						processedData.casosNaoFatais[location] = [];
+					}
+					if(d.value > 0){
+						processedData.casosNaoFatais[location].push({casos:parseInt(d.value),
+						field_code: d.data_field_code});	
+					}
+				});
+				return processedData;
+			}
+
+		//Load in GeoJSON data
+		// d3.csv("./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv", function(data) {
+		// 	d3.json("brazil-states.json", function(json) { 
+		// 		for (var i = 0; i < data.length; i++) { 
+		// 			var dataState = data[i].location; 
+		// 			var dataValue = parseFloat(data[i].value);
+		// 			for (var j = 0; j < json.features.length; j++) { 
+		// 				var jsonState = json.features[j].properties.name; 
+		// 				if (dataState == jsonState) { 
+		// 					json.features[j].properties.value = dataValue; 
+		// 					break; 
+		// 				} 
+		// 			} 
+		// 		}
+
+				
+
+		// 		//Bind data and create one path per GeoJSON feature
+				
+		// 	})
+		// });
+
+		//json.features[1].geometry.coordinates chamar iterando sobre features
+		function calculateCentroidFeatures(json){
+			var centroidFeatureCollection = {type:"FeatureConnection", features : []};
+			json.features.forEach(function(val){
+				centroidFeatureCollection.features.push(
+					{
+						type:"Feature", 
+						id:val.properties.id,
+						geometry:{type:"Point", coordinates:calculateCentroid(val.geometry.coordinates, val.geometry.type == "MultiPolygon"), properties:{name:val.properties.name}}
+					 }
+					);
+			});
+			return centroidFeatureCollection;
+		}
+
+		function calculateCentroidMap(json){
+			//{estado:[x,y]}
+			var centroidMap = {};
+			json.features.forEach(function(val){
+				centroidMap[val.properties.name] = calculateCentroid(val.geometry.coordinates, val.geometry.type == "MultiPolygon");
+			});
+			debugger
+			return centroidMap;
+		}
+
+		//Aux Functions
+		function calculateCentroid(arrayCoordinates, isMultiPolygon){
+			//[[x1,y1],[x2,y2]]
+			var maxX = maxY = Number.NEGATIVE_INFINITY;
+			var minX = minY = Number.POSITIVE_INFINITY;
+			var x,y;
+			var center = {};
+			
+			if(isMultiPolygon){
+				var tempArray = [];
+				arrayCoordinates.forEach(function(value){ //concat arrays into 1
+					tempArray = tempArray.concat.apply(tempArray, value);
+				});
+				arrayCoordinates = [tempArray];
+			}
+
+			arrayCoordinates.forEach(function(values){
+				values.forEach(function(val){
+					if(val[0] > maxX){
+						maxX = val[0];
+					}else if(val[0] < minX){
+						minX = val[0];
+					}
+
+					if(val[1] > maxY){
+						maxY = val[1];
+					}else if(val[1] < minY){
+						minY = val[1];
+					}
+				});
+			});
+			center.x = minX + ((maxX - minX) / 2); center.y = minY + ((maxY - minY) / 2);
+			return [center.x,center.y];
+		}
+		//Zoom function
+		//drag and zoom behaviors
+		function zoomed() {
+		  mapGroup.attr("transform", d3.event.transform);
+		  pieGroup.attr("transform", d3.event.transform);
+		}
+
+		//Aux Functions
+		function sumSectorCases(sectors){
+			var sum = 0;
+			sectors.forEach(function (e,i){
+				sum += e.casos;
+			});
+			return sum;
+		}
+
+
+</script>
+</body>
+</html>
