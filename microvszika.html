@@ -5,6 +5,10 @@
 		<meta charset="utf-8" />
 		<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 		<script src="//d3js.org/queue.v1.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style type="text/css">
 			.line {
 				fill: none;
@@ -14,7 +18,15 @@
 		</style>
 	</head>
 	<body>
-		<svg id="lineChart" width="1200" height="500"></svg>
+		<ul class="nav nav-tabs">
+	    <li class="active"><a href="microvszika.html">Zika VS Microcefalia</a></li>
+	    <li><a href="main.html">Home</a></li>
+	    <li><a href="zika.html">Zika</a></li>
+	    <li><a href="microcefalia.html">Microcefalia</a></li>
+	  </ul>
+		<svg id="lineChart" width="600" height="500"></svg>
+		<svg id="lineChart2" width="600" height="500"></svg>
+
 		<script type="text/javascript">
 
 			dictionary = {'02/04':"./dataset/Brazil_Epidemiological_Bulletin-2016-04-02.csv",
@@ -86,6 +98,7 @@
 				}
 
 				renderLineChart(zicaArray, microArrayDescartados, microArrayConfirmados);
+				renderLineChart2(zicaArray, microArrayDescartados, microArrayConfirmados);
 			}
 
 			function parseZicaData(dataArray, processedData, dayIndex){
@@ -151,11 +164,80 @@
 			function renderLineChart(zicaArray, microArrayDescartados, microArrayConfirmados){
 				microArrayDescartados = sumAllCases(microArrayDescartados);//.id = "Brazil Microcefalia Descartados";
 				microArrayConfirmados = sumAllCases(microArrayConfirmados);//.id = "Brazil Microcefalia Confirmados";
+				microArrayConfirmados.id = "Only Microcefalia";
+				microArrayDescartados.id = "Microcefalia+Zyka";
+				var vazio = []
+				processedData = vazio.concat(microArrayConfirmados,microArrayDescartados);
+				var svg2 = d3.select("#lineChart"),
+				margin = {top: 20, right: 80, bottom: 30, left: 50},
+				width = svg2.attr("width") - margin.left - margin.right,
+				height = svg2.attr("height") - margin.top - margin.bottom,
+				g = svg2.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+				var x = d3.scaleTime().range([0, width]),
+				y = d3.scaleLinear().range([height, 0]),
+				colorScaleLine = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+				var line = d3.line()
+				.curve(d3.curveBasis)
+				.x(function(d) { return x(d.date); })
+				.y(function(d) { return y(d.casos); });
+
+				valuesArray = processedData.map(function(c){return c.values});
+				var flattenedArray =[].concat.apply([], valuesArray);
+
+				debugger
+				x.domain(d3.extent(flattenedArray, function(d) { return d.date; }));
+
+				y.domain([
+					d3.min(processedData, function(c) { return d3.min(c.values, function(d) { return d.casos; }); }),
+					d3.max(processedData, function(c) { return d3.max(c.values, function(d) { return d.casos; }); })
+				]);
+
+				colorScaleLine.domain(processedData.map(function(c) { return c.id; }));
+
+				g.append("g")
+				.attr("class", "axis axis--x")
+				.attr("transform", "translate(0," + height + ")")
+				.call(d3.axisBottom(x));
+
+				g.append("g")
+				.attr("class", "axis axis--y")
+				.call(d3.axisLeft(y))
+				.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 6)
+				.attr("dy", "0.71em")
+				.attr("fill", "#000")
+				.text("Nº de Casos");
+
+				var region = g.selectAll(".region")
+				.data(processedData)
+				.enter().append("g")
+				.attr("class", "region");
+
+				region.append("path")
+				.attr("class", "line")
+				.attr("d", function(d) { return line(d.values); })
+				.style("stroke", function(d) { return colorScaleLine(d.id); });
+
+				region.append("text")
+				.datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+				.attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.casos) + ")"; })
+				.attr("x", 3)
+				.attr("dy", "0.35em")
+				.style("font", "10px sans-serif")
+				.text(function(d) { return d.id; });
+			}
+
+			function renderLineChart2(zicaArray, microArrayDescartados, microArrayConfirmados){
+				microArrayDescartados = sumAllCases(microArrayDescartados);//.id = "Brazil Microcefalia Descartados";
+				microArrayConfirmados = sumAllCases(microArrayConfirmados);//.id = "Brazil Microcefalia Confirmados";
 				microArrayConfirmados.id = "Brazil Microcefalia Descartados";
 				microArrayDescartados.id = "Brazil Microcefalia Confirmados";
 
-				processedData = zicaArray.concat(microArrayConfirmados,microArrayDescartados);
-				var svg2 = d3.select("#lineChart"),
+				processedData = zicaArray;
+				var svg2 = d3.select("#lineChart2"),
 				margin = {top: 20, right: 80, bottom: 30, left: 50},
 				width = svg2.attr("width") - margin.left - margin.right,
 				height = svg2.attr("height") - margin.top - margin.bottom,
