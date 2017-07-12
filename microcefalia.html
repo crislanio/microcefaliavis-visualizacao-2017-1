@@ -61,21 +61,24 @@
 	  </ul>
 	  </div>
 
-    <select id="select-index" onchange="updateData()">
-		<option value="0">Boletim Epidemiológico 02/04/2016</option>
-		<option value="1">Boletim Epidemiológico 23/04/2016</option>
-		<option value="2">Boletim Epidemiológico 30/04/2016</option>
-		<option value="3">Boletim Epidemiológico 07/05/2016</option>
-		<option value="4">Boletim Epidemiológico 14/05/2016</option>
-		<option value="5">Boletim Epidemiológico 21/05/2016</option>
-		<option value="6">Boletim Epidemiológico 28/05/2016</option>
-		<option value="7">Boletim Epidemiológico 11/06/2016</option>
-	</select>
-    
-    <select id="select-fatal" onchange="updateData()">
-		<option value="fatal">Casos fatais</option>
-		<option value="not-fatal">Casos não fatais</option>
-	</select>
+	<div style="clear:both; width: 100%">
+		<select id="select-index" onchange="updateData()">
+			<option value="0">Boletim Epidemiológico 02/04/2016</option>
+			<option value="1">Boletim Epidemiológico 23/04/2016</option>
+			<option value="2">Boletim Epidemiológico 30/04/2016</option>
+			<option value="3">Boletim Epidemiológico 07/05/2016</option>
+			<option value="4">Boletim Epidemiológico 14/05/2016</option>
+			<option value="5">Boletim Epidemiológico 21/05/2016</option>
+			<option value="6">Boletim Epidemiológico 28/05/2016</option>
+			<option value="7">Boletim Epidemiológico 11/06/2016</option>
+		</select>
+		
+		<select id="select-fatal" onchange="updateData()">
+			<option value="fatal">Casos fatais</option>
+			<option value="not-fatal">Casos não fatais</option>
+		</select>
+	
+	</div>
 
 	<svg id="symbolMap" width="1200" height="600"></svg>
 
